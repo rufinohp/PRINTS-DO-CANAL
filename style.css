@@ -14,16 +14,16 @@ body {
     font-family: system-ui, -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.5;
-    font-size: 16px;
+    line-height: 1.4;
+    font-size: 15px;
     width: 100%;
-    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+    overflow-x: hidden;
 }
 
-/* CABEÇALHO - COMPACTO E CENTRALIZADO */
+/* CABEÇALHO - COMPACTO NO MOBILE */
 header {
     background: var(--card);
-    padding: 12px 8px;
+    padding: 10px 8px;
     text-align: center;
     border-bottom: 2px solid var(--accent);
     position: sticky;
@@ -31,25 +31,35 @@ header {
     z-index: 100;
     width: 100%;
 }
-h1 { margin: 0; color: var(--accent); font-size: 1.4rem; }
+h1 { margin: 0; color: var(--accent); font-size: 1.3rem; }
+
+/* Info-datas: empilhado no mobile, horizontal no desktop */
 .info-datas {
     background: #2a2a2a;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 6px 10px;
+    padding: 6px 8px;
     border-radius: 6px;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     margin-top: 6px;
     border: 1px solid var(--border);
     gap: 2px;
+    width: 100%;
 }
-.linha-destaque { color: var(--accent); font-weight: 600; }
-.linha-postado { font-size: 0.8rem; opacity: 0.8; }
-.subtitulo { font-size: 0.75rem; opacity: 0.7; margin-top: 4px; display: block; }
+.linha-destaque { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+.linha-postado { font-size: 0.75rem; opacity: 0.8; }
+.subtitulo { 
+    font-size: 0.7rem; 
+    opacity: 0.6; 
+    margin-top: 4px; 
+    display: block;
+    display: none; /* Esconde no mobile para economizar espaço */
+}
+
 .loading { text-align: center; padding: 30px; color: var(--accent); font-size: 1rem; }
 
-/* CARD DO DIA - SEM MARGENS LATERAIS */
+/* CARD DO DIA - MÍNIMO DE ESPAÇO */
 .dia-card {
     background: var(--card);
     margin: 0;
@@ -58,7 +68,7 @@ h1 { margin: 0; color: var(--accent); font-size: 1.4rem; }
 }
 .dia-header {
     background: #252525;
-    padding: 8px;
+    padding: 6px 8px;
     text-align: center;
     border-bottom: 1px solid var(--border);
 }
@@ -66,17 +76,22 @@ h1 { margin: 0; color: var(--accent); font-size: 1.4rem; }
     background: var(--accent);
     color: #000;
     font-weight: bold;
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
     display: inline-block;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
-.data-texto { display: block; font-size: 1rem; font-weight: 500; }
+.data-texto { 
+    display: block; 
+    font-size: 0.9rem; 
+    font-weight: 500;
+    margin-top: 2px;
+}
 
-/* SEÇÃO DE CADA LOTERIA */
+/* SEÇÃO DE CADA LOTERIA - COMPACTA */
 .loteria-secao { 
-    padding: 10px 8px; 
+    padding: 8px 6px; 
     border-bottom: 1px solid #2a2a2a; 
     width: 100%;
 }
@@ -85,20 +100,20 @@ h1 { margin: 0; color: var(--accent); font-size: 1.4rem; }
     font-weight: bold; 
     margin-bottom: 6px; 
     display: block; 
-    font-size: 0.95rem; 
+    font-size: 0.9rem; 
     text-align: center;
     color: var(--accent);
 }
 
-/* GRID DE IMAGENS - COLUNA ÚNICA, SEM ESPAÇAMENTO DESNECESSÁRIO */
+/* GRID DE IMAGENS - MÁXIMO DE ESPAÇO */
 .img-grid {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
 }
 
-/* SLOT - CONTAINER DA IMAGEM */
+/* SLOT - SEM ESPAÇO DESNECESSÁRIO */
 .slot {
     background: #0a0a0a;
     border: 1px solid #222;
@@ -106,47 +121,107 @@ h1 { margin: 0; color: var(--accent); font-size: 1.4rem; }
     align-items: center;
     justify-content: center;
     width: 100%;
-    /* SEM aspect-ratio, SEM height fixo: deixa a imagem decidir */
 }
 
-/* IMAGEM - CHAVE PARA 1912x749 */
+/* IMAGEM - TAMANHO NATURAL */
 .slot img {
     width: 100%;
     height: auto;
     display: block;
     opacity: 0;
     transition: opacity 0.2s ease;
-    image-rendering: -webkit-optimize-contrast; /* Texto mais nítido no mobile */
+    image-rendering: -webkit-optimize-contrast;
 }
 
-/* Slot vazio - discreto e compacto */
+/* Slot vazio - mínimo */
 .slot.vazio {
     border: 2px dashed #444;
     color: #666;
-    font-size: 0.8rem;
-    min-height: 60px;
+    font-size: 0.75rem;
+    min-height: 50px;
     justify-content: center;
     align-items: center;
 }
 
-/* RODAPÉ */
+/* RODAPÉ - COMPACTO */
 footer {
     text-align: center;
-    padding: 12px 8px;
-    font-size: 0.75rem;
+    padding: 10px 8px;
+    font-size: 0.7rem;
     opacity: 0.6;
     margin-top: 8px;
     width: 100%;
 }
 
-/* RESPONSIVO: Mobile primeiro - IMAGENS OCUPAM 100% DA LARGURA DISPONÍVEL */
+/* ============================================
+   MOBILE OTIMIZADO (telas até 767px)
+   ============================================ */
 @media (max-width: 767px) {
-    body { font-size: 15px; }
-    .slot img { max-width: 100vw; } /* Garante que não vaze a tela */
+    body { font-size: 14px; }
+    
+    header {
+        padding: 8px 6px;
+    }
+    h1 { font-size: 1.2rem; }
+    
+    .info-datas {
+        padding: 5px 6px;
+        font-size: 0.8rem;
+        margin-top: 5px;
+    }
+    .linha-destaque { font-size: 0.85rem; }
+    .linha-postado { font-size: 0.7rem; }
+    .subtitulo { display: none; } /* Esconde "Últimas 10 postagens" */
+    
+    .dia-header {
+        padding: 5px 6px;
+    }
+    .badge {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+    }
+    .data-texto { font-size: 0.85rem; }
+    
+    .loteria-secao {
+        padding: 6px 4px;
+    }
+    .loteria-label {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+    }
+    
+    .img-grid { gap: 5px; }
+    
+    .slot.vazio { min-height: 40px; font-size: 0.7rem; }
+    
+    footer {
+        padding: 8px 6px;
+        font-size: 0.65rem;
+    }
 }
 
-/* Desktop: centraliza sem limitar largura excessivamente */
+/* ============================================
+   DESKTOP (768px+)
+   ============================================ */
 @media (min-width: 768px) {
-    .dia-card { max-width: 100%; }
-    .info-datas { flex-direction: row; gap: 10px; justify-content: center; }
+    .info-datas { 
+        flex-direction: row; 
+        gap: 12px; 
+        justify-content: center;
+        padding: 8px 12px;
+    }
+    .subtitulo { display: block; } /* Mostra subtítulo no desktop */
+    
+    .dia-card { 
+        max-width: 100%; 
+        margin: 0 auto;
+    }
+    .dia-header { padding: 8px; }
+    .badge { font-size: 0.75rem; padding: 3px 10px; }
+    .data-texto { font-size: 1rem; }
+    
+    .loteria-secao { padding: 10px 8px; }
+    .loteria-label { font-size: 1rem; margin-bottom: 8px; }
+    
+    .img-grid { gap: 8px; }
 }
