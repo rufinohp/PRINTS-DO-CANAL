@@ -8,54 +8,57 @@
     --lm: #0052ff;
     --ms: #209869;
 }
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
     font-family: system-ui, -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
-    margin: 0;
     line-height: 1.5;
-    padding-bottom: 40px;
-    font-size: 16px; /* Base legível para mobile */
+    font-size: 16px;
+    width: 100%;
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
 }
+
+/* CABEÇALHO - COMPACTO E CENTRALIZADO */
 header {
     background: var(--card);
-    padding: 18px 16px;
+    padding: 12px 8px;
     text-align: center;
     border-bottom: 2px solid var(--accent);
     position: sticky;
     top: 0;
     z-index: 100;
+    width: 100%;
 }
-h1 { margin: 0; color: var(--accent); font-size: 1.6rem; }
+h1 { margin: 0; color: var(--accent); font-size: 1.4rem; }
 .info-datas {
     background: #2a2a2a;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 1.05rem;
-    margin-top: 10px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-top: 6px;
     border: 1px solid var(--border);
-    gap: 4px;
+    gap: 2px;
 }
 .linha-destaque { color: var(--accent); font-weight: 600; }
-.linha-postado { font-size: 0.9rem; opacity: 0.8; }
-.subtitulo { font-size: 0.85rem; opacity: 0.7; margin-top: 8px; display: block; }
-.loading { text-align: center; padding: 40px; color: var(--accent); font-size: 1.1rem; }
+.linha-postado { font-size: 0.8rem; opacity: 0.8; }
+.subtitulo { font-size: 0.75rem; opacity: 0.7; margin-top: 4px; display: block; }
+.loading { text-align: center; padding: 30px; color: var(--accent); font-size: 1rem; }
 
+/* CARD DO DIA - SEM MARGENS LATERAIS */
 .dia-card {
     background: var(--card);
-    border-radius: 12px;
-    margin: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    border: 1px solid var(--border);
+    margin: 0;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
 }
 .dia-header {
     background: #252525;
-    padding: 12px;
+    padding: 8px;
     text-align: center;
     border-bottom: 1px solid var(--border);
 }
@@ -63,72 +66,87 @@ h1 { margin: 0; color: var(--accent); font-size: 1.6rem; }
     background: var(--accent);
     color: #000;
     font-weight: bold;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
     display: inline-block;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
-.data-texto { display: block; font-size: 1.15rem; font-weight: 500; }
+.data-texto { display: block; font-size: 1rem; font-weight: 500; }
 
-.loteria-secao { padding: 14px 16px; border-bottom: 1px solid #2a2a2a; }
+/* SEÇÃO DE CADA LOTERIA */
+.loteria-secao { 
+    padding: 10px 8px; 
+    border-bottom: 1px solid #2a2a2a; 
+    width: 100%;
+}
 .loteria-secao:last-child { border-bottom: none; }
-.loteria-label { font-weight: bold; margin-bottom: 10px; display: block; font-size: 1.05rem; }
+.loteria-label { 
+    font-weight: bold; 
+    margin-bottom: 6px; 
+    display: block; 
+    font-size: 0.95rem; 
+    text-align: center;
+    color: var(--accent);
+}
 
+/* GRID DE IMAGENS - COLUNA ÚNICA, SEM ESPAÇAMENTO DESNECESSÁRIO */
 .img-grid {
     display: flex;
     flex-direction: column;
-    gap: 16px; /* Mais espaço entre imagens */
+    gap: 8px;
+    width: 100%;
 }
 
+/* SLOT - CONTAINER DA IMAGEM */
 .slot {
     background: #0a0a0a;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 2px solid #222;
+    border: 1px solid #222;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 200px; /* Mínimo só para slots vazios */
+    /* SEM aspect-ratio, SEM height fixo: deixa a imagem decidir */
 }
 
-/* IMAGENS EM TAMANHO NATURAL - A CHAVE DA LEGIBILIDADE */
+/* IMAGEM - CHAVE PARA 1912x749 */
 .slot img {
     width: 100%;
-    height: auto; /* Altura automática, sem distorção */
+    height: auto;
     display: block;
     opacity: 0;
-    transition: opacity 0.3s ease;
-    max-width: 100%;
+    transition: opacity 0.2s ease;
+    image-rendering: -webkit-optimize-contrast; /* Texto mais nítido no mobile */
 }
 
+/* Slot vazio - discreto e compacto */
 .slot.vazio {
     border: 2px dashed #444;
     color: #666;
-    font-size: 0.9rem;
-    min-height: 120px; /* Menor para vazios */
+    font-size: 0.8rem;
+    min-height: 60px;
+    justify-content: center;
+    align-items: center;
 }
 
+/* RODAPÉ */
 footer {
     text-align: center;
-    padding: 20px 16px;
-    font-size: 0.85rem;
+    padding: 12px 8px;
+    font-size: 0.75rem;
     opacity: 0.6;
-    margin-top: 20px;
+    margin-top: 8px;
+    width: 100%;
 }
 
-/* RESPONSIVO: Mobile primeiro */
-@media (max-width: 639px) {
-    body { font-size: 17px; } /* Fonte um pouco maior no celular */
-    .dia-card { margin: 12px; }
-    .slot { min-height: 180px; }
+/* RESPONSIVO: Mobile primeiro - IMAGENS OCUPAM 100% DA LARGURA DISPONÍVEL */
+@media (max-width: 767px) {
+    body { font-size: 15px; }
+    .slot img { max-width: 100vw; } /* Garante que não vaze a tela */
 }
 
+/* Desktop: centraliza sem limitar largura excessivamente */
 @media (min-width: 768px) {
-    .dia-card { max-width: 700px; margin: 16px auto 28px auto; }
-    .info-datas { flex-direction: row; gap: 16px; }
-    /* Em telas grandes, pode usar 2 colunas se quiser */
-    /* .img-grid { flex-direction: row; flex-wrap: wrap; } */
-    /* .slot { width: calc(50% - 8px); } */
+    .dia-card { max-width: 100%; }
+    .info-datas { flex-direction: row; gap: 10px; justify-content: center; }
 }
