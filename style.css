@@ -16,6 +16,7 @@ body {
     margin: 0;
     line-height: 1.5;
     padding-bottom: 40px;
+    font-size: 16px; /* Base legível para mobile */
 }
 header {
     background: var(--card);
@@ -75,35 +76,38 @@ h1 { margin: 0; color: var(--accent); font-size: 1.6rem; }
 .loteria-label { font-weight: bold; margin-bottom: 10px; display: block; font-size: 1.05rem; }
 
 .img-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Mais espaço entre imagens */
 }
-@media (min-width: 640px) { .img-grid { grid-template-columns: repeat(2, 1fr); } }
 
 .slot {
     background: #0a0a0a;
     border-radius: 8px;
-    aspect-ratio: 16/9;
     overflow: hidden;
     border: 2px solid #222;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    width: 100%;
+    min-height: 200px; /* Mínimo só para slots vazios */
 }
+
+/* IMAGENS EM TAMANHO NATURAL - A CHAVE DA LEGIBILIDADE */
 .slot img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    height: auto; /* Altura automática, sem distorção */
     display: block;
     opacity: 0;
     transition: opacity 0.3s ease;
+    max-width: 100%;
 }
+
 .slot.vazio {
     border: 2px dashed #444;
     color: #666;
     font-size: 0.9rem;
+    min-height: 120px; /* Menor para vazios */
 }
 
 footer {
@@ -114,7 +118,17 @@ footer {
     margin-top: 20px;
 }
 
+/* RESPONSIVO: Mobile primeiro */
+@media (max-width: 639px) {
+    body { font-size: 17px; } /* Fonte um pouco maior no celular */
+    .dia-card { margin: 12px; }
+    .slot { min-height: 180px; }
+}
+
 @media (min-width: 768px) {
-    .dia-card { max-width: 680px; margin: 16px auto 28px auto; }
+    .dia-card { max-width: 700px; margin: 16px auto 28px auto; }
     .info-datas { flex-direction: row; gap: 16px; }
+    /* Em telas grandes, pode usar 2 colunas se quiser */
+    /* .img-grid { flex-direction: row; flex-wrap: wrap; } */
+    /* .slot { width: calc(50% - 8px); } */
 }
