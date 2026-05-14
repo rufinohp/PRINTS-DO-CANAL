@@ -1,6 +1,24 @@
 {
   "dias": [
     {
+      "data": "2026-05-13",
+      "lotofacil": [
+        "img/2026-05-13-lf_01.png",
+        "img/2026-05-13-lf_02.png",
+        "img/2026-05-13-lf_03.png",
+        "img/2026-05-13-lf_04.png",
+        "img/2026-05-13-lf_05.png"
+      ],
+      "lotomania": [
+        "img/2026-05-13-lm_01.png",
+        "img/2026-05-13-lm_02.png",
+        "img/2026-05-13-lm_03.png",
+        "img/2026-05-13-lm_04.png",
+        "img/2026-05-13-lm_05.png"
+      ],
+      "megasena": []
+    },
+    {
       "data": "2026-05-12",
       "lotofacil": [
         "img/2026-05-12-lf_01.png",
@@ -152,24 +170,6 @@
         "img/2026-05-02-ms_02.png",
         "img/2026-05-02-ms_03.png"
       ]
-    },
-    {
-      "data": "2026-04-29",
-      "lotofacil": [
-        "img/2026-04-29-lf_01.png",
-        "img/2026-04-29-lf_02.png",
-        "img/2026-04-29-lf_03.png",
-        "img/2026-04-29-lf_04.png",
-        "img/2026-04-29-lf_05.png"
-      ],
-      "lotomania": [
-        "img/2026-04-29-lm_01.png",
-        "img/2026-04-29-lm_02.png",
-        "img/2026-04-29-lm_03.png",
-        "img/2026-04-29-lm_04.png",
-        "img/2026-04-29-lm_05.png"
-      ],
-      "megasena": []
     }
   ]
 }
