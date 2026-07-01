@@ -2,7 +2,10 @@
   "dias": [
     {
       "data": "2026-06-30",
-      "lotofacil": [],
+      "lotofacil": [
+        "img/2026-06-30-lf_01.png",
+        "img/2026-06-30-lf_02.png"
+      ],
       "lotomania": [],
       "megasena": [
         "img/2026-06-30-ms_01.png"
