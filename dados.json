@@ -3,7 +3,13 @@
     {
       "data": "2026-09-12",
       "lotofacil": [],
-      "lotomania": [],
+      "lotomania": [
+        "img/2026-09-12-lm_01.png",
+        "img/2026-09-12-lm_02.png",
+        "img/2026-09-12-lm_03.png",
+        "img/2026-09-12-lm_04.png",
+        "img/2026-09-12-lm_05.png"
+      ],
       "megasena": [
         "img/2026-09-12-ms_01.png",
         "img/2026-09-12-ms_02.png",
