@@ -75,3 +75,4 @@ async function carregarPlanilhas() {
         galeria.innerHTML = '<p class="loading">⚠️ Erro ao carregar. Atualize a página ou verifique sua conexão.</p>';
     }
 }
+carregarPlanilhas();
