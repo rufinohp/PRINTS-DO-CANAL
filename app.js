@@ -5,10 +5,11 @@ async function carregarPlanilhas() {
     try {
         const res = await fetch('dados.json?v=' + new Date().getTime());
         if (!res.ok) throw new Error('Falha ao carregar dados');
+
         const dados = await res.json();
 
         if (!dados.dias || dados.dias.length === 0) {
-            galeria.innerHTML = '<p class="loading">Nenhuma planilha postada ainda.</p>';
+            galeria.innerHTML = '<p class="loading">Nenhum print publicado ainda.</p>';
             infoDatas.innerHTML = '<span class="linha-destaque">Aguardando primeira postagem</span>';
             return;
         }
@@ -36,45 +37,41 @@ async function carregarPlanilhas() {
             `;
 
             const loterias = [
-                { id: 'lf', nome: '🟣 Lotofácil', cor: 'var(--lf)', imgs: dia.lotofacil || [] },
-                { id: 'lm', nome: '🔵 Lotomania', cor: 'var(--lm)', imgs: dia.lotomania || [] },
-                { id: 'ms', nome: '🟢 Mega Sena', cor: 'var(--ms)', imgs: dia.megasena || [] }
+                { nome: '🟣 Lotofácil', cor: 'var(--lf)', imgs: dia.lotofacil || [] },
+                { nome: '🔵 Lotomania', cor: 'var(--lm)', imgs: dia.lotomania || [] },
+                { nome: '🟢 Mega Sena', cor: 'var(--ms)', imgs: dia.megasena || [] }
             ];
 
             loterias.forEach(lot => {
-                let grid = `<div class="img-grid">`;
-                for (let i = 0; i < 6; i++) {
-                    const imgPath = lot.imgs[i];
-                    const numSlot = i + 1;
+                const imagens = lot.imgs.filter(Boolean);
+                if (imagens.length === 0) return;
 
-                    if (imgPath) {
-                        grid += `
-                            <div class="slot">
-                                <img src="${imgPath}" loading="lazy" decoding="async" alt="${lot.nome} - Imagem ${numSlot}" 
-                                     onload="this.style.opacity=1">
-                            </div>`;
-                    } else {
-                        grid += `<div class="slot vazio">Espaço ${numSlot}</div>`;
-                    }
-                }
-                grid += `</div>`;
+                const grid = imagens.map((imgPath, index) => `
+                    <div class="slot">
+                        <img src="${imgPath}" loading="lazy" decoding="async"
+                             alt="${lot.nome} - Imagem ${index + 1}"
+                             onload="this.style.opacity=1">
+                    </div>
+                `).join('');
 
                 html += `
                     <div class="loteria-secao">
                         <span class="loteria-label" style="color:${lot.cor}">${lot.nome}</span>
-                        ${grid}
+                        <div class="img-grid">${grid}</div>
                     </div>
                 `;
             });
 
+            const possuiPrints = loterias.some(lot => lot.imgs.some(Boolean));
+            if (!possuiPrints) {
+                html += '<p class="loading">Nenhum print publicado nesta data.</p>';
+            }
+
             card.innerHTML = html;
             galeria.appendChild(card);
         });
-
     } catch (err) {
         console.error(err);
         galeria.innerHTML = '<p class="loading">⚠️ Erro ao carregar. Atualize a página ou verifique sua conexão.</p>';
     }
 }
-
-document.addEventListener('DOMContentLoaded', carregarPlanilhas);
