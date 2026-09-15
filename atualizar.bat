@@ -1,5 +1,5 @@
 @echo off
 cd /d "%~dp0"
-py atualizar.py
+python atualizar.py
 echo.
 pause
