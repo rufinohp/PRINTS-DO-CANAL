@@ -1,6 +1,14 @@
 {
   "dias": [
     {
+      "data": "2026-09-20",
+      "lotofacil": [
+        "img/2026-09-20-lf_01.png"
+      ],
+      "lotomania": [],
+      "megasena": []
+    },
+    {
       "data": "2026-09-19",
       "lotofacil": [],
       "lotomania": [],
@@ -9,20 +17,6 @@
         "img/2026-09-19-ms_02.png",
         "img/2026-09-19-ms_03.png"
       ]
-    },
-    {
-      "data": "2026-09-18",
-      "lotofacil": [
-        "img/2026-09-18-lf_01.png"
-      ],
-      "lotomania": [
-        "img/2026-09-18-lm_01.png",
-        "img/2026-09-18-lm_02.png",
-        "img/2026-09-18-lm_03.png",
-        "img/2026-09-18-lm_04.png",
-        "img/2026-09-18-lm_05.png"
-      ],
-      "megasena": []
     }
   ]
 }
