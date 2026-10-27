@@ -2,7 +2,9 @@
   "dias": [
     {
       "data": "2026-10-26",
-      "lotofacil": [],
+      "lotofacil": [
+        "img/2026-10-26-lf_01.png"
+      ],
       "lotomania": [
         "img/2026-10-26-lm_01.png",
         "img/2026-10-26-lm_02.png",
