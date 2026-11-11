@@ -1,6 +1,14 @@
 {
   "dias": [
     {
+      "data": "2026-11-10",
+      "lotofacil": [
+        "img/2026-11-10-lf_01.png"
+      ],
+      "lotomania": [],
+      "megasena": []
+    },
+    {
       "data": "2026-11-09",
       "lotofacil": [
         "img/2026-11-09-lf_01.png"
@@ -12,14 +20,6 @@
         "img/2026-11-09-lm_04.png",
         "img/2026-11-09-lm_05.png"
       ],
-      "megasena": []
-    },
-    {
-      "data": "2026-11-08",
-      "lotofacil": [
-        "img/2026-11-08-lf_01.png"
-      ],
-      "lotomania": [],
       "megasena": []
     }
   ]
